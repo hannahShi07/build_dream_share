@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>资讯文章</title>
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Page-Exit" contect="revealTrans(duration=1.0,transtion=12)">
+		<meta http-equiv="Page-enter" contect="revealTrans(duration=1.0,transtion=12)">
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>
+		(function() {
+			var _width = 750;
+			var ua = navigator.userAgent;
+			if (/Android (\d+\.\d+)/.test(ua)) {
+				var version = parseFloat(RegExp.$1);
+				if (version > 2.3) {
+					document.write('<meta name="viewport" content="width=' + _width + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui">')
+				} else {
+					document.write('<meta name="viewport" content="width=' + _width + ',target-densitydpi=device-dpi">')
+				}
+			} else if (/QQAC_Client_iOS/.test(ua)) {
+				document.write('<meta name="viewport" content="width=' + _width + ',maximum-scale=0.5,minimum-scale=0.5">');
+			} else {
+				document.write('<meta name="viewport" content="width=' + _width + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui">')
+			}
+		})();
+		</script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				max-height: 999999px;
+			}
+			/* 顶部样式开始 */
+			.head_top{
+				width: 100%;
+				height: 136px;
+				background: #000;
+				background-color: rgba(0, 0, 0, 0.5);
+				box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.5);
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 99999;
+				padding: 0 32px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				box-sizing: border-box;
+			}
+			.head_left{
+				display: flex;
+				align-items: center;
+			}
+			.head_title{
+				padding: 0 16px;
+				box-sizing: border-box;
+			}
+			.head_title_big{
+				font-size: 32px;
+				font-weight: 500;
+				color: #FFF !important;
+				line-height: 44px;
+			}
+			.head_title_sm{
+				font-size: 24px;
+				font-weight: 400;
+				color: #FFF;
+				line-height: 32px;
+			}
+			.head_logo image{
+				width: 88px;
+				height: 88px;
+				opacity: 1
+
+			}
+			.head_btn{
+				width: 140px;
+				height: 56px;
+				background: #E02020;
+				border-radius: 10px;
+				line-height: 56px;
+				text-align: center;
+				font-size: 24px;
+				font-weight: 500;
+				color: #FFFFFF;
+				line-height: 56px;
+				position: relative;
+				top: 24px	;
+			}
+			.close_btn {
+				position: absolute;
+				color: #fff;
+				right: 20px;
+				top: 5px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			.close_btn svg {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+			}
+			/* 顶部样式结束 */
+
+
+			/* 更多样式开始 */
+			#get_ct_more{
+				background: #fff;
+				height: 218px;
+				width: 100%;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+			}
+			#get_ct_more img{
+				width: 32px;
+				display: block;
+				margin: 0 auto;
+				position:fixed;
+				bottom: 160px;
+				left: 50%;
+				margin-left: -16px;
+				/* width: 32px;
+				height: 32px; */
+			}
+			.more_btn{
+				width: 690px;
+				height: 92px;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				margin-left: 30px;
+				background: #0070E6;
+				border-radius: 20px;
+				margin-bottom: 50px;
+				line-height: 92px;
+				font-size: 28px;
+				text-align: center;
+				color: #FFFFFF;
+			}
+			#content_info{
+				padding: 30px 30px 30px;
+				height:1200px;		/*初始要显示的高度*/
+				overflow:hidden;	/*关键样式：内容会被修剪，并且其余内容是不可见的。*/
+			}
+			/* 更多样式结束 */
+
+			/* 弹窗样式开始 */
+			.zhezhao{
+				position: fixed;
+				left: 0px;
+				top: 0px;
+				background-color: rgba(0, 0, 0, 0.5);
+				width: 100%;
+				height: 100%;
+			}
+			.tankuang{
+				position: relative;
+				background: #fff;
+				width: 496px;
+				height: 250px;
+				background: #FFFFFF;
+				border-radius: 20px;
+				margin-left: 50%;
+				margin-top:60%;
+				transform: translate(-50%,-50%);
+			}
+			#header{
+				height: 40px;
+			}
+			.pop_title{
+				font-size: 32px;
+				font-weight: 400;
+				color: #333333;
+				line-height: 44px;
+				text-align: center;
+				width: 322px;
+				height: 150px;
+				margin:0 auto;
+				border-bottom: 2px solid #F8F8F8;
+				padding: 36px 0;
+				box-sizing: border-box;
+
+			}
+			.pop_btn{
+				display: flex
+			}
+			#btn-right,#btn-left{
+				width: 50%;
+				height: 90px;
+				text-align: center;
+				font-size: 32px;
+				font-weight: 400;
+				color: #ACACAC;
+				line-height: 90px;
+			}
+			#btn-right{
+				color:#E02020
+			}
+			/* 弹窗样式结束 */
+			.det_box {
+				padding: 20px 30px;
+				border-top: 1px solid #ededed;
+			}
+			.det_title {
+				font-size: 38px;
+				color: #333;
+				line-height: 60px;
+			}
+			.det_time {
+				font-size: 26px;
+				color: #666;
+			}
+			.det_source {
+				font-size: 26px;
+				color: #999;
+			}
+			.det_content {
+				margin-top: 40px;
+				text-align: justify;
+				font-size: 34px ;
+				line-height: 50px;
+			}
+			.det_author{
+				color: #999;
+				width: 100%;
+				text-align: right;
+				font-size: 28px;
+				margin-top: 40px;
+			}
+			.flex_row{
+				display: flex;
+				justify-content: space-between;
+			}
+			.ad_box {
+				width: 690px;
+				height: 380px;
+				margin: 26px auto 0;
+				position: relative;
+				border-top: 1px solid #f6f6f6;
+				padding-top: 26px;
+			}
+			.title_bottom{
+				margin-top: 20px;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #ccc;
+			}
+			.ad_img {
+				width: 100%;
+				height: 380px;
+				background-color: #ccc;
+				text-align: center;
+			}
+			.ad_txt{
+				width: 80px;
+				line-height: 34px;
+				color: #444;
+				background-color: #efefef;
+				border-radius: 4px;
+				position: absolute;
+				font-size: 24px;
+				text-align: center;
+				top: 40px;
+				left: 16px;
+			}
+			.det_content p{
+				font-size: 32px;
+				line-height: 54px;
+			}
+			.det_content img{
+				width: 100%;
+			}
+			.det_content video{
+				width: 100%;
+			}
+			
+			.dis_content{
+				padding: 30px 30px 30px;
+			}
+			.dis_list{
+				border-top: 1px solid #f6f6f6;
+				padding: 20px 0;	
+			}
+			.dis_img{
+				width: 84px;
+				height: 84px;
+				background-color: #eee;
+				border-radius: 50%;
+			}
+			.dis_txt{
+				width: 588px;
+				margin-top: 10px;
+			}
+			.dis_name{
+				color: #25445C;
+				font-size: 26px;
+			}
+			.dis_num{
+				font-size: 26px;
+				color: #333;	
+			}
+			.iconicon_dianzan_moren{
+				display: inline-block;
+				font-size: 28px;
+				margin-left: 10px;
+				position: relative;
+				top: -4px;
+			}
+			.iconicon_dianzan_Highlight{
+				display: inline-block;
+				font-size: 28px;
+				margin-left: 10px;
+				position: relative;
+				top: -4px;
+				color: #F05F58;
+			}
+			.dis_time{
+				font-size: 22px;
+				color: #999;
+				margin-top: 10px;
+			}
+			.dis_txt_content{
+				color: #333;
+				font-size: 28px;
+				margin-top: 20px;
+				line-height: 40px;
+				text-align: justify;
+			}
+			#comment{
+				padding-bottom: 140px;
+				margin: 0 30px;
+			}
+			.xiazai_bg{
+				width: 750px;
+				height: 140px;
+				position: fixed;
+				border-radius: 20px 20px 0 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0,0,0,.5);
+			}
+			.xiazai_bth{
+				width: 300px;
+				height: 80px;
+				background-color: cornflowerblue;
+				color: #fff;
+				border-radius: 10px;
+				font-size: 30px;
+				text-align: center;
+				line-height: 80px;
+				margin-top: 30px;
+				position: absolute;
+				transform: translateX(-50%);
+				left: 50%; 
+			}
+		</style>
+	</head>
+	<body>
+	<!-- 头部开始 -->
+		<div class="head_top">
+			<div class="head_left">
+				<div class="head_logo">
+					<image src="./img/icon_logo.png"></image>
+				</div>
+				
+				<div class="head_title">
+					<p class="head_title_big">筑梦裕安</p>
+					<p class="head_title_sm">打开筑梦裕安APP，体验更佳！</p>
+				</div>
+			</div>
+			<div class="close_btn" onclick="closeHeadTop()">
+				<svg t="1599704757244" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3648" width="18" height="18"><path d="M419.90656 509.393455L65.60256 122.135273a75.869091 75.869091 0 0 1 0-100.538182 61.253818 61.253818 0 0 1 92.066909 0L511.973469 408.855273 866.277469 21.597091a61.253818 61.253818 0 0 1 92.16 0 75.869091 75.869091 0 0 1 0 100.538182l-354.397091 387.258182 354.304 387.258181a75.869091 75.869091 0 0 1 0 100.538182 61.253818 61.253818 0 0 1-92.066909 0L511.973469 609.931636l-354.304 387.258182a61.253818 61.253818 0 0 1-92.16 0 75.869091 75.869091 0 0 1 0-100.538182l354.397091-387.258181z" p-id="3649" fill="#ffffff"></path></svg>
+			</div>
+			<div class="head_btn">
+				立即打开
+			</div>
+		</div>
+		<!-- 头部结束 -->
+		
+		<div id="content_info">
+			<div class="page_bg">
+				<div class="det_box">
+					<div class="det_title"></div>
+					<div class="flex_row title_bottom">
+						<div class="det_source">来源：
+							<span class="det_source_content">暂无</span>
+						</div>
+						<div class="det_time"></div>
+					</div>
+					<div class="det_content"  id="det_content"></div>
+					<div class="det_author">编辑：
+						<span class="det_author_content">暂无</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 广告图片 -->
+			<div class="ad_box" style="display: none;">
+				<div class="">
+					<!-- 判断为广告显示 -->
+					<img src="" class="ad_img">
+					<div class="ad_txt">推广</div>
+				</div>
+			</div>
+			<!-- 评论内容 -->
+			<div id="comment"></div>
+		</div>
+		
+		<!-- H5打开APP弹框开始 -->
+		<div class="zhezhao" id='zhezhao'>
+			<div class="tankuang">
+				<div id="header">
+					<div class="pop_title">下载筑梦裕安APP阅读 体验更佳</div>
+					<div class="pop_btn">
+						<div id="btn-left" onclick="hidder()">取消</div>
+						<div id="btn-right">下载</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- H5打开APP弹框结束 -->
+				
+		<!-- 展开下载按钮开始 -->
+		<div id="get_ct_more" class="get_ct_more" >
+			<img src='./img/icon_more.png' onclick="dianwo()" class="more_bt" id="more_bt">
+			<div class="more_btn">打开筑梦裕安APP，阅读体验更佳</div>
+		</div>
+		<!-- 展开下载按钮结束 -->
+				
+		<!-- 下载 --> 
+		<!-- <div class="xiazai_bg">
+			<div class="xiazai_bth">前往下载</div>
+		</div> -->
+	<a href="#" id="jumpapp"><span style="opacity: 0;position: absolute;">打开app</span></a>
+	<div id="block" style="position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 100000;">
+		<div onclick="closemask()" style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;background-color: rgba(0,0,0,.8);z-index: 3"></div>
+		<div style="padding-right:  18px;position: relative;z-index:10;">
+			<img src="img/wx-share2.png" style="width: 100%;" />
+		</div>
+	</div>
+	<div class=""></div>
+	<script type="text/javascript">
+		var infoId = ''; // 文章id
+		var nodeId = ''; // 栏目id
+		var msgUrl='https://zmyaapi.keeprisk.com/' // 测试环境
+		// var msgUrl='http://116.62.170.111:8081/' // 生产环境
+		var path = window.location.protocol + "//" +window.location.host;
+		function getParams(){
+			var url=window.location.href;
+			// console.log(url)
+			// var url= 'http://112.27.250.251:8104/app/liveDynamic/findDetailById2?infoId=830&nodeId=100'
+			if(url.indexOf("?")>0){
+				url=url.split("?")[1];
+				arr=url.split("&");
+				var obj={};
+				for(var i=0; i<arr.length; i++){
+					var arr_list=arr[i].split("=");
+					obj[arr_list[0]]=arr_list[1];
+				}
+				infoId = obj.infoId
+				nodeId = obj.nodeId
+				// console.log(infoId)
+			}
+		}
+		function closeHeadTop() {//关闭顶部提示
+			document.getElementsByClassName('head_top')[0].style.display="none";
+		}
+		$(function(){
+			// getParams()
+			infoId = 825;//设置文章id
+			// 获取文章数据
+			$.ajax({
+				type: 'post',
+				url: msgUrl+"app/info/infoDetail",
+				dataType: 'JSON',
+				data:{
+					infoId: infoId
+				},
+				success: res => {
+					console.log(res);
+
+					if(res.code == 200){
+						// 数据渲染
+						$('.det_title').text(res.data.title)
+						$('.det_time').text(res.data.createTime)
+						$('.det_content').html(res.data.content)
+						// 判断来源不为空
+						if(res.data.source != null){
+							$('.det_source_content').text(res.data.source)
+						}
+						if(res.data.author != null){
+							$('.det_author_content').text(res.data.author)
+						}
+					}else if(res.code == 100){
+						window.location.href ="./data_error.html"
+					}
+				},
+				error: msg => {
+					console.log(msg);
+				}
+			})
+
+			// // 获取广告数据
+			// $.ajax({
+			//     type: 'post',
+			//     url: msgUrl+"app/advert/getnodes",
+			// 	dataType:"JSON",
+			// 	data:{
+			// 		nodeId: nodeId,
+			// 		type:'2'
+			// 	},
+			//     success: res => {
+			//         console.log(res);
+			// 		// 数据渲染
+
+			//     },
+			//     error: msg => {
+			//         console.log(msg);
+			//     }
+			// })
+
+			// 获取评论数据
+			$.ajax({
+				type: 'post',
+				url: msgUrl+"app/info/getInfoCommentList",
+				dataType: 'JSON',
+				data:{
+					infoId: infoId,
+				},
+				success: res => {
+					console.log(res);
+					// 数据渲染
+					var str='';
+					for(var i=0;i<res.data.list.length;i++){
+						str += '<div class="dis_list flex_row">'+
+								'<img src='+ res.data.list[i].plrAvatar +' mode="" class="dis_img"></img>'+
+								'<div class="dis_txt">'+
+								'<div class="flex_row">'+
+								'<div class="dis_name">'+ res.data.list[i].plrName +'</div>'+
+								'<div class="dis_num">'+
+								'<div>点赞'+ res.data.list[i].likeNum +'</div>'+
+								'</div>'+
+								'</div>'+
+								'<div class="dis_time">'+ res.data.list[i].publishDate +'</div>'+
+								'<div class="dis_txt_content">'+ res.data.list[i].content +'</div>'+
+								'</div>'+
+								'</div>'
+					}
+					//放入页面的容器显示
+					$('#comment').html(str);
+				},
+				error: msg => {
+					console.log(msg);
+				}
+			})
+		})
+
+		$(".xiazai_bth").click(function(){
+			window.location.href = path+"/uploads/file/html/index.html";
+		});
+		$("#btn-right").click(function(){
+			window.location.href = path+"/uploads/file/html/index.html";
+		});
+		function openOrdownloadApp(){
+			var url = 'hbuilder://?articleInfo='+ encodeURI(infoId);
+			if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {// 苹果系统
+				var loadDateTime = new Date();
+				window.location = url;//schema链接或者universal link
+				window.setTimeout(function() { //如果没有安装app,便会执行setTimeout跳转下载页
+					var timeOutDateTime = new Date();
+					if (timeOutDateTime - loadDateTime < 5000) {
+						window.location = ""; //ios下载地址
+					} else {
+						window.close();
+					}
+				}, 500);
+
+			} else if (navigator.userAgent.match(/android/i)) {// 安卓系统
+				var state = null;
+				try {
+					window.location = url;//schema链接或者universal link
+					window.setTimeout(function() {
+						window.location.href = path+"/uploads/file/html/index.html";//android下载页面
+					}, 500);
+				} catch (e) {}
+			}
+		}
+		$(".more_btn").click(function(){
+			openOrdownloadApp()
+			// window.location.href = path+"/uploads/file/html/index.html";
+		});
+		$(".head_btn").click(function(){
+			openOrdownloadApp()
+			// window.location.href = path+"/uploads/file/html/index.html";
+		});
+	</script>
+
+	<!-- 展开收起开始 -->
+	<script type="text/javascript">
+		// 弹窗开始
+		document.getElementById('zhezhao').style.display="none";
+		function dianwo(){
+			document.getElementById('zhezhao').style.display="";
+		}
+		function hidder(){
+			document.getElementById('zhezhao').style.display="none";
+			this.seeMore()//调用展开更多函数
+		}
+		// 弹窗结束
+
+		// 展开更多
+		function seeMore(){
+			var btn = document.getElementById('get_ct_more');
+			var obj = document.getElementById('content_info');
+			// var total_height = obj.scrollHeight;//文章总高度
+
+			// console.log(total_height)
+			// var show_height  = 900;//定义原始显示高度
+			// if(total_height>show_height){
+			// btn.style.display = 'block';
+			obj.style.height = "auto";
+			btn.style.display = 'none';
+			// }
+		}
+
+		var t1=window.setInterval(refreshCount, 500);		//动态按钮
+		var more_img = document.getElementById("more_bt");
+		var first_one = 0;
+		function refreshCount() {
+			if(first_one == 0){
+				more_img.style.bottom='160px';
+				first_one=1;
+			}else{
+				more_img.style.bottom='165px';
+				first_one=0;
+			}
+		}
+	</script>
+	<!-- 展开收起结束 -->
+	</body>
+
+</html>

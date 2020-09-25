@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>裕安圈动态</title>
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Page-Exit" contect="revealTrans(duration=1.0,transtion=12)">
+		<meta http-equiv="Page-enter" contect="revealTrans(duration=1.0,transtion=12)"> 
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>
+		(function() {
+			var _width = 750;
+			var ua = navigator.userAgent;
+			if (/Android (\d+\.\d+)/.test(ua)) {
+				var version = parseFloat(RegExp.$1);
+				if (version > 2.3) {
+					document.write('<meta name="viewport" content="width=' + _width + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui">')
+				} else {
+					document.write('<meta name="viewport" content="width=' + _width + ',target-densitydpi=device-dpi">')
+				}
+			} else if (/QQAC_Client_iOS/.test(ua)) {
+				document.write('<meta name="viewport" content="width=' + _width + ',maximum-scale=0.5,minimum-scale=0.5">');
+			} else {
+				document.write('<meta name="viewport" content="width=' + _width + ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui">')
+			}
+		})();
+		</script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				max-height: 999999px;
+			}
+			/* 顶部样式开始 */
+			.head_top{
+				width: 100%;
+				height: 136px;
+				background: #000;
+				background-color: rgba(0, 0, 0, 0.5);
+				box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.5);
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 99999;
+				padding: 0 32px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				box-sizing: border-box;
+			}
+			.head_left{
+				display: flex;
+				align-items: center;
+			}
+			.head_title{
+				padding: 0 16px;
+				box-sizing: border-box;
+			}
+			.head_title_big{
+				font-size: 32px;
+				font-weight: 500;
+				color: #FFF !important;
+				line-height: 44px;
+			}
+			.head_title_sm{
+				font-size: 24px;
+				font-weight: 400;
+				color: #FFF;
+				line-height: 32px;
+			}
+			.head_logo image{
+				width: 88px;
+				height: 88px;
+				opacity: 1
+			
+			}
+			.head_btn{
+				width: 140px;
+				height: 56px;
+				background: #E02020;
+				border-radius: 10px;
+				line-height: 56px;
+				text-align: center;
+				font-size: 24px;
+				font-weight: 500;
+				color: #FFFFFF;
+				line-height: 56px;
+			}
+			/* 顶部样式结束 */
+			
+			.dis_content{
+				padding: 30px 30px 18px;
+			}
+			.dis_list{
+				border-top: 1px solid #f6f6f6;
+				padding: 20px 0;
+				
+			}
+			.dis_img{
+				width: 84px;
+				height: 84px;
+				background-color: #eee;
+				border-radius: 50%;
+			}
+			.dis_txt{
+				width: 588px;
+				margin-top: 10px;
+				
+				
+			}
+			.dis_name{
+				color: #25445C;
+				font-size: 26px;
+			}
+			.zhiding{
+				width: 80px;
+				line-height: 40px;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 24px;
+				color: #fff;
+				background-color: #ccc; 
+				display: inline-block; 
+				margin-right: 30px;
+				position: relative;
+				top: -8px;
+			}
+			.shenhe{
+				line-height: 40px;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 28px;
+				color: #333; 
+				display: inline-block; 
+				margin-right: 20px;
+				position: relative;
+				top: -4px;
+			}
+			.shenhe1{
+				color: #007AFF;
+			}
+			.shenhe2{
+				color: #555;
+			}
+			.shenhe3{
+				color: red;
+			}
+			.iconicon_fenxiang_Default{
+				color: #666;
+				display: inline-block; 
+			}
+			.dis_num{
+				font-size: 26px;
+				color: #333;
+				
+			}
+			.iconicon_dianzan_moren{
+				display: inline-block;
+				font-size: 28px;
+				margin-left: 10px;
+				position: relative;
+				top: -4px;
+			}
+			.iconicon_dianzan_Highlight{
+				display: inline-block;
+				font-size: 28px;
+				margin-left: 10px;
+				position: relative;
+				top: -4px;
+				color: #F05F58;
+			}
+			.dis_time{
+				font-size: 22px;
+				color: #999;
+				margin-top: 10px;
+			}
+			.dis_txt_content{
+				color: #333;
+				font-size: 28px;
+				margin-top: 20px;
+				line-height: 40px;
+			}
+			.addr{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				font-size:28px;
+				padding-left: 102px;
+				box-sizing: border-box;
+				font-weight:bold;
+				color:rgba(58,106,142,1);
+				line-height:40px;
+			}
+			.flex_row{
+				display: flex;
+				justify-content: space-between;
+			}
+			.zan_box{
+				padding: 20px 20px;
+				margin: 0 30px;
+				box-sizing: border-box;
+				border-radius:10px;
+				background:rgba(248,248,248,1);
+			}
+			.iconicon_zan_Default{
+				padding-top: 8px;
+				font-size: 26px;
+				float: left;
+				color:rgba(58,106,142,1);
+			}
+			.penple{
+				display: flex;
+				font-size:28px;
+				line-height: 42px;
+				font-weight:400;
+				color:rgba(58,106,142,1);
+				text-align: justify;
+			}
+			.zan_img{
+				width: 90px;
+				width: 30px;
+				height: 30px;
+				margin-top: 8px;
+			}
+			.zan_penple{
+				font-size:28px;
+				margin-left: 10px;
+				flex: 1;
+				line-height: 42px
+			}
+			.discuss_box{
+				padding: 20px 20px;
+				margin: 0 30px;
+				margin-top: 20px;
+				padding-bottom: 20px;
+				box-sizing: border-box;
+				margin-bottom: 30px;
+				background:rgba(248,248,248,1);
+				border-radius:10px;
+				line-height: 44px;
+				position: relative;	
+				display: flex;
+			}
+			.iconicon_pinglun_Default{
+				color: #3A6A8E;
+				font-size: 25px;
+				padding-top: 0px;
+				float: left;
+				font-weight: bold;
+			}
+			.info_box{
+				flex: 1;
+			}
+			.info_content{
+				padding:0 0 0 8px;
+			}
+			.info_content_mes{
+			}
+			.mes_img{
+				vertical-align: middle;
+			}
+			.or{
+				font-size: 26px;
+				color: #bababa;
+				text-align: center;
+			}
+			.btn_more{
+				margin-top: 30px;
+				font-size:28px;
+				font-weight:500;
+				color:rgba(58,106,142,1);
+				text-align: right;
+			}
+			.name{
+				float: left;
+				font-size:28px;
+				font-weight:400;
+				color:rgba(58,106,142,1);
+			}
+			.info{
+				font-size:28px;
+				font-weight:400;
+				color:rgba(51,51,51,1);
+				line-height: 42px;
+				margin-bottom: 20px;
+
+			}
+			.xiazai_bg{
+				width: 750px;
+				height: 140px;
+				position: fixed;
+				border-radius: 20px 20px 0 0;
+				bottom: 0;
+				background-color: rgba(0,0,0,.5);
+			}
+			.xiazai_bth{
+				width: 300px;
+				height: 80px;
+				background-color: cornflowerblue;
+				color: #fff;
+				border-radius: 10px;
+				font-size: 30px;
+				text-align: center;
+				line-height: 80px;
+				margin-top: 30px;
+				position: absolute;
+				transform: translateX(-50%);
+				left: 50%; 
+			}
+			
+			.dy_box{
+				margin-top: 20px;
+			}
+			.img_box{
+				
+			}
+			.query{
+				width: 500px;
+				height: 500px;
+			}
+			.image1{
+				width: 500px;
+				height: 500px;
+			}
+			.image2{
+				width: 240px;
+				height: 240px;
+				float: left;
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+			.image3{ 
+				width: 176px;
+				height: 176px;
+				float: left;
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 头部开始 -->
+		<div class="head_top">
+			<div class="head_left">
+				<div class="head_logo">
+					<image src="./img/icon_logo.png"></image>
+				</div>
+				
+				<div class="head_title">
+					<p class="head_title_big">筑梦裕安</p>
+					<p class="head_title_sm">打开筑梦裕安APP，体验更佳！</p>
+				</div>
+			</div>
+		
+			<div class="head_btn">
+				立即打开
+			</div>
+		</div>
+		<!-- 头部结束 -->
+		<div>
+			<div class="dis_content">
+				<div class="dis_list flex_row">
+					<img src="" class="dis_img">
+					<div class="dis_txt">
+						<div class="flex_row">
+							<div class="dis_name"></div>
+						</div>
+						<!-- 发布时间 -->
+						<div class="dis_time"></div>
+						<!-- 发布内容 -->
+						<div class="dis_txt_content"></div>
+						<!-- 判断上传的是视屏还是图片 -->
+						<div class="dy_box"></div>
+					</div>
+				</div>
+			</div>
+						
+			<!-- 点赞人数 -->
+			<div class="zan_box">
+				<div class="penple">
+					<image src='./img/icon_zan.png' class='zan_img'></image>
+					<div>
+						<span class="zan_penple"></span>
+						<span class="zan_num"></span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 评论区 -->
+			<div class="discuss_box">
+				<div  class="discuss_box_mes"></div>
+				<div class="info_box"></div>
+			</div>
+		</div>
+		<div style="height: 180px;"></div>
+		<!-- <div class="xiazai_bg">
+			<div class="xiazai_bth">前往下载</div>
+		</div> -->
+	</body>
+	<script type="text/javascript">
+		var dynamicId = ''; // 动态id
+		var msgUrl='http://112.27.250.251:8104/' // 测试环境
+		// var msgUrl='http://116.62.170.111:8081/' // 生产环境
+		var path = window.location.protocol + "//" +window.location.host;
+		function getParams(){
+		    var url=window.location.href;
+			// console.log(url)
+			// var url= 'http://112.27.250.251:8104/app/liveDynamic/findDetailById2?dynamicId=42'
+			if(url.indexOf("?")>0){
+				url=url.split("?")[1];
+				arr=url.split("&");
+				var obj={};
+				for(var i=0; i<arr.length; i++){
+					var arr_list=arr[i].split("=");
+					obj[arr_list[0]]=arr_list[1];
+				}
+				dynamicId = obj.dynamicId
+			}
+		}
+		$(function(){
+			getParams()
+			// 获取默认数据			
+			$.ajax({
+			    type: 'post',
+			    url: msgUrl+"app/lifeDynamic/dynamicDetail",
+			    dataType: 'JSON',
+				data:{
+					dynamicId: dynamicId
+				},
+			    success: res => {
+					console.log(res);
+					
+					if(res.code == 200){
+						// 判断头像不为空
+						if(res.data.userAvatar != null){
+							$(".dis_img").attr('src',res.data.userAvatar)
+						}else{
+							$(".dis_img").attr('src','./img/moren_tx.png')
+						}
+						$(".dis_name").text(res.data.userRealName)
+						$(".dis_time").text(res.data.createTime)
+						$(".dis_txt_content").html(res.data.content)
+						$(".dis_time").text(res.data.createTime)
+						// 点赞人数渲染
+						// 数据渲染
+						var str=[];
+						if(res.data.likeList.length<=10){
+							for(var i=0;i<res.data.likeList.length;i++){
+								if(i<res.data.likeList.length-1){
+									str.push(res.data.likeList[i].userName+'，')
+								}else if(i==res.data.likeList.length-1){
+									str.push(res.data.likeList[i].userName+' ')
+								}							
+								// str.push(res.data.likeList[i].userName+' ' + ',')
+							}
+						}else{
+							for(var i=0;i<10;i++){
+								if(i<res.data.likeList.length-1){
+									str.push(res.data.likeList[i].userName+'，')
+								}else if(i==res.data.likeList.length-1){
+									str.push(res.data.likeList[i].userName+' ')
+								}
+								// str.push(res.data.likeList[i].userName+' ' + ',')
+							}
+						}
+						if(res.data.likeNum == 0){
+							$('.zan_box').css('display','none');
+						}
+						//放入页面的容器显示
+						$('.zan_penple').html(str);
+						// 判断点赞人数大于世人
+						if(res.data.likeNum>10){
+							$(".zan_num").text('等'+ res.data.likeNum +'人点赞')
+						}
+						
+						// 
+						var str1=[];
+						for(var i=0;i<res.data.lifeFiles.length;i++){
+							if(res.data.lifeFiles[i].fileType == 0){
+								if(res.data.lifeFiles.length == 1){
+									str1 +=
+									'<div class="img_box">'+
+										'<img class="image1" src='+ res.data.lifeFiles[i].filePath +'>'+
+									'</div>'
+								}else if(res.data.lifeFiles.length >1 && res.data.lifeFiles.length <=4 && res.data.lifeFiles.length != 3){
+									str1 +=
+									'<div class="img_box">'+
+										'<img class="image2" src='+ res.data.lifeFiles[i].filePath +'>'+
+									'</div>'
+								}else if(res.data.lifeFiles.length >4 || res.data.lifeFiles.length == 3){
+									str1 +=
+									'<div class="img_box">'+
+										'<img class="image3" src='+ res.data.lifeFiles[i].filePath +'>'+
+									'</div>'
+								}
+							}else{
+								str1 +=
+								'<div class="img_box">'+
+									// '<video class="image1" width="500">'+
+									// 	'<source src='+ res.data.lifeFiles[i].filePath +' type="video/mp4"></source>'+
+									// 	'当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>'+
+									// '</video>'+
+									'<video width="500" height="500" controls loop="loop" src='+ res.data.lifeFiles[i].filePath +'></video>'+
+								'</div>'
+							}
+						}
+						$(".dy_box").html(str1)
+					}else if(res.code == 100){
+						window.location.href ="./data_error.html"
+					}
+			    },
+			    error: msg => {
+			        console.log(msg);
+			    }
+			})
+			
+			// 获取评论数据
+			$.ajax({
+			    type: 'post',
+			    url: msgUrl+"app/lifeDynamic/commentList",
+			    dataType: 'JSON',
+				data:{
+					dynamicId: dynamicId,
+					pageNo: 1,
+					pageSize: 30
+				},
+			    success: res => {
+			        console.log(res);
+					// 评论数据
+					if(res.code == 200){
+						var str1 = '';
+						var str4 = '';
+						if(res.data.list.length>0){
+							str4 += "<div class='info_content_mes'>"+
+										"<image src='./img/icon_mes.png' class='mes_img'></image>" +
+									"</div>"
+							$(".discuss_box_mes").html(str4)
+						}
+						for(var j=0;j<res.data.list.length;j++){
+							str1 +=	'<div class="info_content">'+
+										'<div class="item">'+
+											'<div class="name">'+ res.data.list[j].plrName +'：</div>'+
+											'<xmp class="info">'+ res.data.list[j].content +'</xmp>'+
+										'</div>'+
+									'</div>'
+						}
+						$(".info_box").html(str1)
+					}else{
+						$(".discuss_box").css('display','none')
+					}
+			    },
+			    error: msg => {
+			        console.log(msg);
+			    }
+			})
+		})
+		
+		$(".xiazai_bth").click(function(){
+			window.location.href = path+"/uploads/file/html/index.html";
+		});
+		$(".head_btn").click(function(){
+			window.location.href = path+"/uploads/file/html/index.html";
+		});
+		
+	</script>
+	
+</html>

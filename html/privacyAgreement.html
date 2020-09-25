@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隐私条款</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<style>
+    p{font-size: 16px;}
+</style>
+<body>
+<div id="box" style="padding: 20px"></div>
+</body>
+<script>
+	var msgUrl="http://112.27.250.251:8104/"; // 测试环境
+	// var msgUrl="http://116.62.170.111:8081/"; // 生产环境
+    $.post(msgUrl+"app/about/getPrivacy",
+        {
+            type:1
+        },
+        function(data,status){
+            if (data.code === 200) {
+                let txt = data.data.content;
+                $("#box").html(txt);
+            } else {
+                console.log(data);
+            }
+        });
+</script>
+</html>
