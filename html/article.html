@@ -441,8 +441,8 @@
 			<div class="xiazai_bth">前往下载</div>
 		</div> -->
 	<a href="#" id="jumpapp"><span style="opacity: 0;position: absolute;">打开app</span></a>
-	<div id="block" style="position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 100000;">
-		<div onclick="closemask()" style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;background-color: rgba(0,0,0,.8);z-index: 3"></div>
+	<div id="maskblock" onclick="closemask()" style="position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 100000;display: none;">
+		<div style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;background-color: rgba(0,0,0,.8);z-index: 3"></div>
 		<div style="padding-right:  18px;position: relative;z-index:10;">
 			<img src="img/wx-share2.png" style="width: 100%;" />
 		</div>
@@ -454,6 +454,9 @@
 		var msgUrl='https://zmyaapi.keeprisk.com/' // 测试环境
 		// var msgUrl='http://116.62.170.111:8081/' // 生产环境
 		var path = window.location.protocol + "//" +window.location.host;
+		function closemask() {//关闭遮罩
+			$('#maskblock').hide();
+		}
 		function getParams(){
 			var url=window.location.href;
 			// console.log(url)
@@ -476,7 +479,7 @@
 		}
 		$(function(){
 			// getParams()
-			infoId = 825;//设置文章id
+			infoId = 1072;//设置文章id
 			// 获取文章数据
 			$.ajax({
 				type: 'post',
@@ -571,28 +574,34 @@
 			window.location.href = path+"/uploads/file/html/index.html";
 		});
 		function openOrdownloadApp(){
-			var url = 'hbuilder://?articleInfo='+ encodeURI(infoId);
-			if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {// 苹果系统
-				var loadDateTime = new Date();
-				window.location = url;//schema链接或者universal link
-				window.setTimeout(function() { //如果没有安装app,便会执行setTimeout跳转下载页
-					var timeOutDateTime = new Date();
-					if (timeOutDateTime - loadDateTime < 5000) {
-						window.location = ""; //ios下载地址
-					} else {
-						window.close();
-					}
-				}, 500);
-
-			} else if (navigator.userAgent.match(/android/i)) {// 安卓系统
-				var state = null;
-				try {
+			var url = 'hbuilder://?infoid'+ encodeURI(infoId);
+			if(ua.match(/MicroMessenger/i)=="micromessenger"){//微信内打开则显示提示蒙版
+				$('#maskblock').show();
+				return false;
+			}else{//浏览器内可以根据scheme打开指定app
+				if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {// 苹果系统
+					var loadDateTime = new Date();
 					window.location = url;//schema链接或者universal link
-					window.setTimeout(function() {
-						window.location.href = path+"/uploads/file/html/index.html";//android下载页面
+					window.setTimeout(function() { //如果没有安装app,便会执行setTimeout跳转下载页
+						var timeOutDateTime = new Date();
+						if (timeOutDateTime - loadDateTime < 5000) {
+							window.location = ""; //ios下载地址
+						} else {
+							window.close();
+						}
 					}, 500);
-				} catch (e) {}
+
+				} else if (navigator.userAgent.match(/android/i)) {// 安卓系统
+					var state = null;
+					try {
+						window.location = url;//schema链接或者universal link
+						window.setTimeout(function() {
+							window.location.href = path+"/uploads/file/html/index.html";//android下载页面
+						}, 500);
+					} catch (e) {}
+				}
 			}
+
 		}
 		$(".more_btn").click(function(){
 			openOrdownloadApp()
