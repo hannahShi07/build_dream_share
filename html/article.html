@@ -385,7 +385,7 @@
 			</div>
 		</div>
 		<!-- 头部结束 -->
-		
+  <img src="https://app.yuannews.cn/uploads/image/public/202009/20200924093204_d2shbb5im5"/>
 		<div id="content_info">
 			<div class="page_bg">
 				<div class="det_box">
@@ -604,10 +604,10 @@
 			}
 
 		}
-		$(".more_btn").click(function(){
+/*		$(".more_btn").click(function(){
 			openOrdownloadApp()
 			// window.location.href = path+"/uploads/file/html/index.html";
-		});
+		});*/
 		$(".head_btn").click(function(){
 			openOrdownloadApp()
 			// window.location.href = path+"/uploads/file/html/index.html";
@@ -619,7 +619,8 @@
 		// 弹窗开始
 		document.getElementById('zhezhao').style.display="none";
 		function dianwo(){
-			document.getElementById('zhezhao').style.display="";
+			document.getElementById('zhezhao').style.display="none";
+			$("#get_ct_more").hide()
 		}
 		function hidder(){
 			document.getElementById('zhezhao').style.display="none";
