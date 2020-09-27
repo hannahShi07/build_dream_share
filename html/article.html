@@ -574,7 +574,8 @@
 			window.location.href = path+"/uploads/file/html/index.html";
 		});
 		function openOrdownloadApp(){
-			var url = 'hbuilder://?infoid'+ encodeURI(infoId);
+			var url = 'builddream://?infoid'+ encodeURI(infoId);
+      var ua = window.navigator.userAgent.toLowerCase();
 			if(ua.match(/MicroMessenger/i)=="micromessenger"){//微信内打开则显示提示蒙版
 				$('#maskblock').show();
 				return false;
